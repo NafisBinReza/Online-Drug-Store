@@ -1,0 +1,29 @@
+// colors
+$Font_color: #FFFFFF;
+$Primary_color: #000000;
+$Highlight_color: #00B3A6;
+$Start_gradient: #002422;
+$End_gradient: #006B63;
+$Warning: #DC0000;
+$LightRed: #7B0000;
+$Green: #4dc247;
+
+// length
+$Border: 2px;
+
+@import "partials/snakeBorder";
+@import "partials/utility";
+@import "partials/form";
+@import "partials/navBar";
+@import "partials/header";
+@import "partials/drugs";
+@import "partials/details";
+@import "partials/comments";
+@import "partials/userManagement";
+@import "partials/flash";
+@import "partials/userProfile";
+@import "partials/container";
+@import "partials/purchase";
+@import "partials/cartTable";
+@import "partials/cart";
+@import "partials/orders"

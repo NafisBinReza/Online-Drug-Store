@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link type="text/css" href="/style/css/style.css" rel="stylesheet" >
+    <title>Medical Drug marketing</title>
+</head>
+<body>
+    <nav class="navBar">
+        <ul class="navBar_nav">
+            <li class="navBar_nav--item">
+                <a href="/" class="navBar_nav--item-link logo">MDM</a>
+            </li>
+            <li class="navBar_nav--item">
+                <form action="/search" method="POST">
+                    <input type="text" name="search" id="search" placeholder="Search Medicine" class="navBar_nav--item-box">
+                    <button class="navBar_nav--item-btn"><img src="/style/icon/icons8-search-48.png" alt="Search"></button>
+                </form>
+            </li>
+            <% if(!currentUser){ %> 
+                <li class="navBar_nav--item">
+                    <a href="/login" class="navBar_nav--item-link">login</a>
+                </li>
+                <li class="navBar_nav--item">
+                    <a href="/register" class="navBar_nav--item-link">sign up</a>
+                </li>
+            <% } else { %>
+                    <li class="navBar_nav--item">
+                        <a href="/manage/users/<%=currentUser.USER_ID%>/profile" class="navBar_nav--item-link"><%= currentUser.USER_NAME %></a>
+                    </li>
+                    <li class="navBar_nav--item">
+                        <a href="/manage/users/<%=currentUser.USER_ID%>/cart" class="navBar_nav--item-link">Cart</a>
+                    </li>
+                    <% if(currentUser.USER_TYPE == "Moderators"){ %> 
+                        <li class="navBar_nav--item">
+                            <a href="/manage/orders" class="navBar_nav--item-link">Orders</a>
+                        </li>
+                        <li class="navBar_nav--item">
+                            <a href="/manage/history" class="navBar_nav--item-link">History</a>
+                        </li>
+                        <li class="navBar_nav--item">
+                            <a class="navBar_nav--item-link" id="drugs" href="/manage/drugs/new">Add Drugs</a>
+                        </li>
+                        <li class="navBar_nav--item">
+                            <a class="navBar_nav--item-link" id="users" href="/manage/users">Users</a>
+                        </li>
+                    <% } %> 
+                    <li class="navBar_nav--item">
+                        <a href="/logout" class="navBar_nav--item-link">logout</a>
+                    </li>
+            <% } %> 
+        </ul>
+    </nav>
+    <main>
+

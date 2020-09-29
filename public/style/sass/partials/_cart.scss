@@ -1,0 +1,106 @@
+.cart {
+    width: 80%;
+    margin: 3rem auto;
+    display: flex;
+    font-size: 1.3rem;
+
+    &_submit {
+        &--btn {
+            margin-top: 3rem;
+            height: 4rem;
+            width: 100%;
+            border: $Border solid transparent;
+            background-color: $Primary_color;
+            color: $Font_color;
+            box-shadow: 0 0 2rem $Highlight_color;
+            font-size: calc(18px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));;
+            padding: 0.75rem;
+            @include borderRadius5();
+            
+            &:hover, &:focus {
+                transform: translateY(-3px);
+                    -webkit-transform: translateY(-3px);
+                    -moz-transform: translateY(-3px);
+                    -ms-transform: translateY(-3px);
+                    -o-transform: translateY(-3px);
+                @include hoverEffects();
+            }
+
+            &:active {
+                outline: none;
+                transform: translateY(3px);
+                    -webkit-transform: translateY(3px);
+                    -moz-transform: translateY(3px);
+                    -ms-transform: translateY(3px);
+                    -o-transform: translateY(3px);
+                @include hoverEffects();
+            }
+        } 
+    }
+
+    &_details {
+        flex: 1;
+    
+        & table {
+            width: 100%;
+        }
+    
+        & th, td{
+            padding: 0.75rem;
+            text-align: center;
+        }
+    
+        & tr:nth-child(odd):not(:last-child) {
+            background-color: rgba($Highlight_color, $alpha: .2);
+        }
+    
+        & tr:last-child {
+            background-color: $Highlight_color;
+            color: #000000;
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+    
+        & table, th, td {
+            border-collapse: collapse;
+        }
+    }
+
+    &_user{
+        width: 100%;
+        flex: 1;
+
+        &-item{
+            @include inputBox();
+            width: 60%;
+            text-transform: capitalize;
+        }
+
+        &-title {
+            text-align: center;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+    }
+
+    &_icon {
+        height: 1.6rem;
+        margin-right: .25rem;
+        width: 1.5rem;
+    }
+
+    &_btn {
+        margin-top: 3rem;
+
+        &-item {
+            padding: 0.2rem;
+            float: right;
+            margin-right: .25rem;
+
+            &:hover {
+                transition: .25s;
+                transform: translateY(-2px);
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+.purchase {
+    align-items: center ;
+    float: right;
+    width: 40%;
+    margin-right: 5%;
+    box-shadow: 0 0 2rem $Highlight_color;
+    
+    &_description {
+        height: 100%;
+        padding: 1rem;
+
+        &-form {
+            display: flex;
+
+            &-btn {
+                background-color: transparent;
+                text-transform: uppercase;
+                @include borderRadius5();
+                margin-top: 3px;
+                border: $Border solid transparent;
+                box-shadow: 0 0 1rem $Highlight_color;
+                padding: 1rem;
+                font-size: 1.2rem;
+                width: 25%;
+
+                &:hover, &:focus {
+                    transform: translateY( -3px);
+                    -webkit-transform: translateY( -3px);
+                    -moz-transform: translateY( -3px);
+                    -ms-transform: translateY( -3px);
+                    -o-transform: translateY( -3px);
+                    @include hoverEffects();
+                }
+    
+                &:active {
+                    outline: none;
+                    transform: translateY(3px);
+                    -webkit-transform: translateY(3px);
+                    -moz-transform: translateY(3px);
+                    -ms-transform: translateY(3px);
+                    -o-transform: translateY(3px);
+                    @include hoverEffects();
+                }
+            }
+
+            &--label {
+                text-align: right;
+                width: 25%;
+                font-size: 1.4rem;
+                padding-left: 2rem;
+            }
+
+            &--box {
+                outline: none;
+                margin: 0 auto;
+                padding: 0.7rem 2rem;
+                border: none;
+                height: 50%;
+                font-size: 1.3rem;
+                border-bottom: 2px solid $Highlight_color;
+                border-top: $Border solid transparent;
+                z-index: 100;
+                background-color: transparent;
+                margin-left: 5%;
+                width: 50%;
+                box-shadow: 0px 0px 2rem $Highlight_color;
+                &:focus, &:active {
+                    color: $Font-color;
+                    box-shadow: 0px 0px 2rem 0.5rem $Highlight_color;
+                }
+                &::placeholder {
+                    color: $Highlight_color;
+                }
+            }
+        }
+       
+
+    }
+
+    &-item {
+        flex: 2;
+    }
+    &-btn {
+        flex: 1;
+    }
+}

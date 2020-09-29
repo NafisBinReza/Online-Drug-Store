@@ -1,0 +1,30 @@
+<%- include('../../partials/header'); -%> 
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Edit cart Item</h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+
+<div class="margin-top">
+    <form action="/manage/carts/<%=cart[0].CART_ID%>/edit" method="POST">
+        <div class="form_input">
+            <label class="form_register--label" for="Quantity"><%= cart[0].DRUG_NAME %> Quantity: </label>
+            <input value="<%= cart[0].CART_QUANTITY %>" class="form_register--box" type="text" name="Quantity" placeholder="" id="Quantity" required>
+        </div>
+        <button class="form_login--btn">Done</button>
+    </form>
+</div>
+    
+
+<%- include('../../partials/footer'); -%> 

@@ -1,0 +1,17 @@
+<%- include('../../partials/header'); -%> 
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Edit your comment on: <%= comments[0].DRUG_NAME %></h1>
+</div>
+
+<div class="comments_form">
+    <form action="/manage/drugs/<%=comments[0].DRUG_ID%>/<%=comments[0].COMMENT_ID%>/edit" method="POST">
+        <div class="form_input">
+            <label for="Comment" class="comments_form--label">Comment: </label>
+            <textarea type="text" name="text" placeholder="Comment" id="Comment" class="comments_form--item"><%= comments[0].COMMENT_TEXT %> </textarea>
+        </div>
+        <button class="form_login--btn">Submit</button>
+    </form>
+</div>
+
+<%- include('../../partials/footer'); -%> 

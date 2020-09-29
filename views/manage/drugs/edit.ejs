@@ -1,0 +1,115 @@
+<%- include('../../partials/header'); -%> 
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title"> Edit: &nbsp; <%= drugs[0].DRUG_NAME %></h1>
+</div>
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+<%= typeof message != 'undefined' ? message : ''; %> 
+
+<div class="suggestion">
+    <p>Leave Image fields empty if you don't want to change password</p>
+</div>
+
+<div class="form">
+    <div class="form_DRUG">
+        <form action="/manage/drugs/<%= drugs[0].DRUG_ID %>" method="POST" enctype="multipart/form-data">
+            <div class="form_input">
+                <label class="form_register--label" for="name">Name: </label>
+                <input id="name" class="form_register--box" type="text" placeholder="" name="name" value="<%= drugs[0].DRUG_NAME %>" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Generic">Generic Name: </label>
+                <input id="Generic" class="form_register--box" type="text" placeholder="" name="Generic" value="<%= drugs[0].DRUG_GENERIC_NAME %>" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="type">Type: </label>
+                <select class="form_register--gender" id="type" name="type">
+                    <option <%= (drugs[0].DRUG_TYPE === 'Liquid') ? "Selected" : "" %> value="Liquid">Liquid</option>
+                    <option <%= (drugs[0].DRUG_TYPE === 'Tablet') ? "Selected" : "" %> value="Tablet">Tablet</option>
+                    <option <%= (drugs[0].DRUG_TYPE === 'Capsules') ? "Selected" : "" %> value="Capsules">Capsules</option>
+                    <option <%= (drugs[0].DRUG_TYPE === 'Drops') ? "Selected" : "" %> value="Drops">Drops</option>
+                    <option <%= (drugs[0].DRUG_TYPE === 'Inhalers') ? "Selected" : "" %> value="Inhalers">Inhalers</option>
+                    <option <%= (drugs[0].DRUG_TYPE === 'Injections') ? "Selected" : "" %> value="Injections">Injections</option>
+                    <option <%= (drugs[0].DRUG_TYPE === 'Suppositories') ? "Selected" : "" %> value="Suppositories">Suppositories</option>
+                </select>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="price">Price: </label>
+                <input id="price" class="form_register--box" type="text" placeholder="" name="price" value="<%= drugs[0].DRUG_PRICE %>" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Pharmaceuticals">Pharmaceuticals: </label>
+                <input id="Pharmaceuticals" class="form_register--box" type="text" placeholder="" name="pharma" value="<%= drugs[0].DRUG_PHARMA %>" required>
+            </div>
+            <span class="gap"></span>
+            <div class="form_input">
+                <label class="form_register--label" for="Therapeutic">Therapeutic Class: </label>
+                <textarea type="text" name="Therapeutic" placeholder="" id="Therapeutic" class="form_register--box textarea" ><%= drugs[0].DRUG_THERAPEUTIC_CLASS %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Indications">Indications: </label>
+                <textarea type="text" name="Indications" placeholder="" id="Indications" class="form_register--box textarea" ><%= drugs[0].DRUG_INDICATION %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Pharmacology">Pharmacology: </label>
+                <textarea type="text" name="Pharmacology" placeholder="" id="Pharmacology" class="form_register--box textarea" ><%= drugs[0].DRUG_PHARMACOLOGY %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Dosage">Dosage And Administration: </label>
+                <textarea type="text" name="Dosage" placeholder="" id="Dosage" class="form_register--box textarea" ><%= drugs[0].DRUG_DOSAGE %></textarea>
+            </div>
+            <span class="gap"></span>
+            <div class="form_input">
+                <label class="form_register--label" for="Overdose">Overdose Effects: </label>
+                <textarea type="text" name="Overdose" placeholder="" id="Overdose" class="form_register--box textarea" ><%= drugs[0].DRUG_OVERDOSE_EFFECTS %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Interaction">Interaction: </label>
+                <textarea type="text" name="Interaction" placeholder="" id="Interaction" class="form_register--box textarea" ><%= drugs[0].DRUG_INTERACTION %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Contraindications">Contraindications: </label>
+                <textarea type="text" name="Contraindications" placeholder="" id="Contraindications" class="form_register--box textarea" ><%= drugs[0].DRUG_CONTRAINDICATIONS %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="SideEffects">Side Effects: </label>
+                <textarea type="text" name="SideEffects" placeholder="" id="SideEffects" class="form_register--box textarea" ><%= drugs[0].DRUG_SIDE_EFFECTS %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Pregnancy">Pregnancy And Lactation: </label>
+                <textarea type="text" name="Pregnancy" placeholder="" id="Pregnancy" class="form_register--box textarea" ><%= drugs[0].DRUG_PREGNANCY_AND_LACTATION %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Precautions">Precautions And Warnings: </label>
+                <textarea type="text" name="Precautions" placeholder="" id="Precautions" class="form_register--box textarea" ><%= drugs[0].DRUG_PRECAUTIONS_AND_WARNINGS %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="SpecialPopulations">Use in Special Populations: </label>
+                <textarea type="text" name="SpecialPopulations" placeholder="" id="SpecialPopulations" class="form_register--box textarea" ><%= drugs[0].DRUG_USE_IN_SPECIAL_POPULATION %></textarea>
+            </div>
+            <span class="gap"></span>
+            <div class="form_input">
+                <label class="form_register--label" for="Storage">Storage Conditions: </label>
+                <textarea type="text" name="Storage" placeholder="" id="Storage" class="form_register--box textarea" ><%= drugs[0].DRUG_STORAGE_CONDITIONS %></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Image">Image: </label>
+                <input class="form_register--box" id="Image" type="file" name="image" accept="image/*">
+            </div>
+            <button class="form_login--btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../../partials/footer'); -%> 

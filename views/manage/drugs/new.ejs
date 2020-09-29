@@ -1,0 +1,115 @@
+<%- include('../../partials/header'); -%> 
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Add Drug</h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+<%= typeof message != 'undefined' ? message : ''; %> 
+
+<div class="form">
+    <div class="form_DRUG">
+        <form action="/manage/drugs" method="POST" enctype="multipart/form-data">
+            <div class="form_input">
+                <label class="form_register--label" for="name">Name: </label>
+                <input id="name" class="form_register--box" type="text" placeholder="" name="name" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Generic">Generic Name: </label>
+                <input id="Generic" class="form_register--box" type="text" placeholder="" name="Generic" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="type">Type: </label>
+                <select class="form_register--gender" id="type" name="type">
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Liquid">Liquid</option>
+                    <option value="Tablet">Tablet</option>
+                    <option value="Capsules">Capsules</option>
+                    <option value="Drops">Drops</option>
+                    <option value="Inhalers">Inhalers</option>
+                    <option value="Injections">Injections</option>
+                    <option value="Suppositories">Suppositories</option>
+                </select>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="price">Price (Taka): </label>
+                <input id="price" class="form_register--box" type="text" placeholder="" name="price" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Pharmaceuticals">Pharmaceuticals: </label>
+                <input id="Pharmaceuticals" class="form_register--box" type="text" placeholder="" name="pharma" required>
+            </div>
+            <span class="gap"></span>
+            <div class="form_input">
+                <label class="form_register--label" for="Therapeutic">Therapeutic Class: </label>
+                <textarea type="text" name="Therapeutic" placeholder="" id="Therapeutic" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Indications">Indications: </label>
+                <textarea type="text" name="Indications" placeholder="" id="Indications" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Pharmacology">Pharmacology: </label>
+                <textarea type="text" name="Pharmacology" placeholder="" id="Pharmacology" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Dosage">Dosage And Administration: </label>
+                <textarea type="text" name="Dosage" placeholder="" id="Dosage" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Overdose">Overdose Effects: </label>
+                <textarea type="text" name="Overdose" placeholder="" id="Overdose" class="form_register--box textarea" required></textarea>
+            </div>
+            <span class="gap"></span>
+            <div class="form_input">
+                <label class="form_register--label" for="Interaction">Interaction: </label>
+                <textarea type="text" name="Interaction" placeholder="" id="Interaction" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Contraindications">Contraindications: </label>
+                <textarea type="text" name="Contraindications" placeholder="" id="Contraindications" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="SideEffects">Side Effects: </label>
+                <textarea type="text" name="SideEffects" placeholder="" id="SideEffects" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Pregnancy">Pregnancy And Lactation: </label>
+                <textarea type="text" name="Pregnancy" placeholder="" id="Pregnancy" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Precautions">Precautions And Warnings: </label>
+                <textarea type="text" name="Precautions" placeholder="" id="Precautions" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="SpecialPopulations">Use in Special Populations: </label>
+                <textarea type="text" name="SpecialPopulations" placeholder="" id="SpecialPopulations" class="form_register--box textarea" required></textarea>
+            </div>
+            <span class="gap"></span>
+            <div class="form_input">
+                <label class="form_register--label" for="Storage">Storage Conditions: </label>
+                <textarea type="text" name="Storage" placeholder="" id="Storage" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input"> 
+                <label class="form_register--label" for="Image">Image: </label>
+                <input class="form_register--box" id="Image" type="file" name="image" required>
+            </div>
+            <div>
+                <button class="form_login--btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../../partials/footer'); -%> 

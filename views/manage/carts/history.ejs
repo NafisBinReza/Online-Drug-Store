@@ -1,0 +1,98 @@
+<%- include('../../partials/header'); -%> 
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Successful Deliveries</h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+
+<% if(orders.length > 0){ %>
+
+
+<div class="orders">
+    <%  var previous = "";
+        var next = "";
+        var total = 0;
+        var price = 0; %> 
+    <% for (var i = 0; i < orders.length; i++) { %> 
+            <% if(orders[i].USER_ID != previous){ %>  
+                <div class="orders-in">
+                <% previous = orders[i].USER_ID; %>
+                <div class="orders_header">
+                    <div class="orders_header-title">
+                        <h2>Customer: <%= orders[i].USER_NAME; %> </h2>
+                        <p>Phone number: <%= orders[i].USER_PHONE_NO; %> </p>
+                            <% var date = orders[i].DELIVERED_DATE; %>
+                            <% var dateArr = date.toString().split(" "); %>  
+                            <% var month = dateArr[1]; %>
+                            <% var day = dateArr[2]; %> 
+                            <% var year = dateArr[3]; %>
+                        <p>Order date: <%= day %> - <%= month %> - <%= year %></p>
+                    </div>
+                    <div class="orders_header-address">   
+                        <h2> &nbsp; </h2>
+                        <p>Address: <%= orders[i].USER_ADDRESS %> </p>
+                        
+                    </div>
+                </div>
+                    <table class="orders_table">
+                        <tr>
+                            <th>NO</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+            <% } %> 
+            <% if(i+1 < orders.length) { %> 
+                <% next = orders[i+1].USER_ID; %>
+            <% } %>
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%= orders[i].DRUG_NAME %></td>
+                            <td><%= orders[i].DELIVERED_QUANTITY %></td>
+                            <td><%= orders[i].PRICE %></td>
+                            <% price += orders[i].PRICE;
+                            total += orders[i].DELIVERED_QUANTITY; %> 
+                        </tr>
+            <% if(previous != next){ %>
+                        <tr>
+                            <td></td>
+                            <td>Total</td>
+                            <td><%= total %> </td>
+                            <td><%= price %> </td>
+                        </tr>
+                    </table>  
+                <% total = 0;
+                    price = 0; %>
+            </div>
+            <% } %>
+    <% } %>      
+
+                    <tr>
+                        <td></td>
+                        <td>Total</td>
+                        <td><%= total %> </td>
+                        <td><%= price %> </td>
+                    </tr>
+                </table>  
+        </div>
+
+
+
+        <% } else { %>
+            <div class="suggestion">
+                <p>No history</p>
+            </div>
+        <% } %> 
+
+<%- include('../../partials/footer'); -%> 

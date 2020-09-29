@@ -1,0 +1,132 @@
+.orders {
+    width: 80%;
+    margin: 2rem auto;
+    font-size: 1.3rem;  
+
+    &--btn {
+        height: 3rem;
+        margin-top: 2rem;
+        padding-left: 1.5rem;
+        width: 100%;
+
+        &-item {
+            margin-top: 1.5rem;
+            width: 70%;
+            padding: 0.4rem;
+            font-family: NightmarePills;
+            box-shadow: 0 0 1rem $Highlight_color;
+            margin-right: 2rem;
+            @include snakeBorder();
+            
+            &:hover span:nth-child(1){
+                background-image: linear-gradient(90deg, transparent, $Highlight_color);
+                @include snakeBorderTop();
+            }
+            
+            &:hover span:nth-child(3){
+                background-image: linear-gradient(270deg, transparent, $Highlight_color);
+                @include snakeBorderBottom();
+            }
+            
+            &:hover span:nth-child(2){
+                background-image: linear-gradient(180deg, transparent, $Highlight_color);
+                @include snakeBorderRight();
+            }
+            
+            &:hover span:nth-child(4){
+                background-image: linear-gradient(360deg, transparent, $Highlight_color);
+                @include snakeBorderLeft();
+            }
+        }
+
+        &-red {
+            margin-top: 1rem;
+            width: 70%;
+            box-shadow: 0 0 1rem $Warning;
+            color: $Warning;
+            padding: 0.4rem;
+            @include snakeBorder();
+
+            &:hover {
+                box-shadow: 0 0 5rem 0.5rem $Warning;
+            }
+            
+            &:hover span:nth-child(1){
+                background-image: linear-gradient(90deg, transparent, $Warning);
+                @include snakeBorderTop();
+            }
+            
+            &:hover span:nth-child(3){
+                background-image: linear-gradient(270deg, transparent, $Warning);
+                @include snakeBorderBottom();
+            }
+            
+            &:hover span:nth-child(2){
+                @include snakeBorderRight();
+                background-image: linear-gradient(180deg, transparent, $Warning);
+            }
+            
+            &:hover span:nth-child(4){
+                background-image: linear-gradient(360deg, transparent, $Warning);
+                @include snakeBorderLeft();
+            }
+        }
+    }
+
+    &-in{
+        display: flex;
+        margin: 3rem 1rem;
+        padding: 2rem;
+        box-shadow: 0 0 2rem $Highlight_color;
+    }
+
+    &_header {
+        justify-content: center;
+        flex: 1;
+        margin: 0 auto;
+        line-height: 1.7;
+        display: flex;
+
+        &-title {
+            padding: 1rem;
+            padding-top: 0;
+            flex: 1;
+        }
+
+        &-address {
+            padding: 1rem;
+            padding-top: 0;
+            flex: 1;
+        }
+    }
+
+    &_table {
+        flex: 1;
+        width: 100%;
+        margin: 0 auto;
+
+        & table {
+            box-shadow: 0 0 2rem $Highlight_color;
+        }
+    
+        & th, td{
+            padding: 0.75rem;
+            text-align: center;
+        }
+    
+        & tr:nth-child(odd):not(:last-child) {
+            background-color: rgba($Highlight_color, $alpha: .2);
+        }
+    
+        & tr:last-child {
+            background-color: $Highlight_color;
+            color: #000000;
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+    
+        & table, th, td {
+            border-collapse: collapse;
+        }
+    }
+}

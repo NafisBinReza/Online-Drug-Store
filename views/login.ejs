@@ -1,0 +1,35 @@
+<%- include('partials/header'); -%>
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Login</h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+
+<div class="form">
+    <div class="form_login">
+        <form action="/login" method="POST">
+            <div class="form_input">
+                <label for="name" class="form_register--label">Username: </label>
+                <input type="text" name="username" placeholder="" id="name" class="form_register--box" required>
+            </div>
+            <div class="form_input">
+                <label for="password" class="form_register--label">Password: </label>
+                <input type="password" name="password" placeholder="" id="password" class="form_register--box" required>
+            </div>
+            <button class="form_login--btn">Login</button>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

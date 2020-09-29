@@ -1,0 +1,36 @@
+.profile {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    width: 80%;
+    margin: 3rem auto;
+    display: flex;
+
+    &_description{
+        flex: 1;
+        margin: 0 auto;
+        text-align: left;
+        display: inline-block;
+        margin-right: 1rem;
+
+        &--btn {
+            padding: 2rem;
+        }
+
+        &-item{
+            padding: 0.5rem;
+
+            .textarea {
+                height: 8rem;
+            }
+        }
+    }
+
+    &_active{
+        margin-left: 1rem;
+        flex: 1;
+
+        &-orders {
+            margin: 1rem auto;
+        }
+    }
+}

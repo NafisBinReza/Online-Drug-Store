@@ -1,0 +1,274 @@
+<%- include('../../partials/header'); -%> 
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Drug Details</h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+
+<div class="details">
+    <div class="purchase">
+        <div class="header_secondary">
+            <h1 class="header_secondary--title">Purchase</h1>
+        </div>
+        <% if(!currentUser){ %> 
+            <div class="suggestion">
+                <p>Please Login to make purchase</p>
+            </div>
+            <% } else { %>
+                <div class="purchase_description">
+                    <form class="purchase_description-form" action="/manage/drugs/<%= drugs[0].DRUG_ID %>/buy" method="POST">
+                        <div class="purchase-item">
+                            <label class="purchase_description-form--label" for="no">No of items: </label>
+                            <input class="purchase_description-form--box" id="no" type="number" placeholder="Number" name="quantity">
+                        </div>
+                        <button class="purchase_description-form-btn highlight">Add to cart</button>
+                    </form>
+                </div>
+                <div>
+                    <table class="cart_table">
+                        <tr>
+                            <th>No.</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>price</th>
+                        </tr>
+                        <% for(i = 0; i < cart.length; i++){ %>
+                            <tr>
+                                <td><%= i + 1 %> </td>
+                                <td><%= cart[i].DRUG_NAME %></td>
+                                <td><%= cart[i].CART_QUANTITY %></td>
+                                <td><%= cart[i].PRICE %></td>
+                            </tr>
+                            <% if(i >= 5) { %>
+                                <% break; %> 
+                            <% } %> 
+                        <% } %>  
+                    </table> 
+                    <% if(cart.length > 6) { %>
+                        <h4 class="padding-left"><%= cart.length - 6 %>  more in cart. See cart section for details<h4>
+                    <% } %> 
+                    <% if(cart.length == 0) { %>
+                        <h4 class="padding-left">Empty<h4>
+                    <% } %> 
+                </div>
+        <% } %>
+    </div>
+    
+        <div class="details_description">
+            <div class="details_image">
+                <img src="/img/<%= drugs[0].DRUG_IMAGE %>" alt="DRUG_IMAGE" class="details_image--item">
+            </div>
+            <% if(drugs[0].DRUG_NAME != ""){ %>
+                <div class="profile_description-item">
+                    <label class="form_register--label" for="name">Name: </label>
+                    <input class="details_description-item-input" id="name" type="text" value="<%= drugs[0].DRUG_NAME %>" disabled>
+                </div>
+            <% } %> 
+            <% if(drugs[0].DRUG_GENERIC_NAME != ""){ %>
+            <div class="profile_description-item">
+                <label class="form_register--label" for="Disease">Generic Name: </label>
+                <input class="details_description-item-input" id="Disease" type="text" value="<%= drugs[0].DRUG_GENERIC_NAME %>" disabled>
+            </div>
+            <% } %> 
+            <% if(drugs[0].DRUG_PRICE != ""){ %>
+            <div class="profile_description-item">
+                <label class="form_register--label" for="price">price (TK): </label>
+                <input class="details_description-item-input" id="price" type="text" value="<%= drugs[0].DRUG_PRICE %>" disabled>
+            </div>
+            <% } %> 
+            <% if(drugs[0].DRUG_PHARMA != ""){ %>
+            <div class="profile_description-item">
+                <label class="form_register--label" for="Pharmaceuticals">Pharmaceuticals: </label>
+                <input class="details_description-item-input" id="Pharmaceuticals" type="text" value="<%= drugs[0].DRUG_PHARMA %>" disabled>
+            </div>
+            <% } %> 
+        </div>
+    <div class="container">
+        <% if(drugs[0].DRUG_THERAPEUTIC_CLASS != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Therapeutic Class: </span>
+                <p class="container-p"><%= drugs[0].DRUG_THERAPEUTIC_CLASS %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_INDICATION != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Indications: </span>
+                <p class="container-p"><%= drugs[0].DRUG_INDICATION %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_PHARMACOLOGY != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Pharmacology: </span>
+                <p class="container-p"><%= drugs[0].DRUG_PHARMACOLOGY %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_DOSAGE != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Dosage And Administration: </span>
+                <p class="container-p"><%= drugs[0].DRUG_DOSAGE %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_OVERDOSE_EFFECTS != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Overdose Effects: </span>
+                <p class="container-p"><%= drugs[0].DRUG_OVERDOSE_EFFECTS %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_INTERACTION != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Interaction: </span>
+                <p class="container-p"><%= drugs[0].DRUG_INTERACTION %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_CONTRAINDICATIONS != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Contraindications: </span>
+                <p class="container-p"><%= drugs[0].DRUG_CONTRAINDICATIONS %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_SIDE_EFFECTS != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Side Effects: </span>
+                <p class="container-p"><%= drugs[0].DRUG_SIDE_EFFECTS %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_PREGNANCY_AND_LACTATION != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Pregnancy And Lactation: </span>
+                <p class="container-p"><%= drugs[0].DRUG_PREGNANCY_AND_LACTATION %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_PRECAUTIONS_AND_WARNINGS != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Precautions And Warnings: </span>
+                <p class="container-p"><%= drugs[0].DRUG_PRECAUTIONS_AND_WARNINGS %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_USE_IN_SPECIAL_POPULATION != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Use in Special Populations: </span>
+                <p class="container-p"><%= drugs[0].DRUG_USE_IN_SPECIAL_POPULATION %></p>
+            </div>
+        <% } %> 
+        <% if(drugs[0].DRUG_STORAGE_CONDITIONS != ""){ %>
+            <div class="profile_description-item">
+                <span class="container-span">Storage Conditions: </span>
+                <p class="container-p"><%= drugs[0].DRUG_STORAGE_CONDITIONS %></p>
+            </div>
+        <% } %> 
+        <div class="details_description--btn">
+            <% if(!currentUser){ %> 
+            <% } else { %>
+                <% if(currentUser.USER_TYPE == "Moderators"){ %> 
+                    <a href="/manage/drugs/<%=drugs[0].DRUG_ID%>/delete" class="drug_imgbox--btn-red mediumBtm" id="warning">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        delete
+                    </a>
+                    <a href="/manage/drugs/<%=drugs[0].DRUG_ID%>/edit" class="drug_imgbox--btn-item mediumBtm highlight">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Edit
+                    </a>
+                <% } %> 
+            <% } %> 
+        </div>
+    </div>
+</div>
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Comments</h1>
+</div>
+
+<% if(!currentUser){ %> 
+    <div class="suggestion">
+        <p>Please Login to add a new comment</p>
+    </div>
+    <% } else { %>
+            <div class="comments_form">
+                <form action="/manage/drugs/<%= drugs[0].DRUG_ID %>/comment" method="POST">
+                    <div class="form_input">
+                        <label for="Comment" class="comments_form--label">Add a Comment: </label>
+                        <textarea type="text" name="text" placeholder="Comment" id="Comment" class="comments_form--item"></textarea>
+                    </div>
+                    <button class="comments_form--submit">Submit</button>
+                </form>
+            </div>
+    <% } %>
+
+<div class="comments">
+    <% if(comments.length == 0){ %>
+        <div class="suggestion">
+            <p>No Comments</p>
+        </div>
+    <% } %>  
+    <% for(var i = 0; i < comments.length; i++){ %> 
+        <div class="comments_form">
+            <div class="Comments_form_header">
+                    <% var date = comments[i].COMMENT_DATE; %>
+                    <% var dateArr = date.toString().split(" ") %>  
+                    <% var month = dateArr[1]; %>
+                    <% var day = dateArr[2]; %> 
+                    <% var year = dateArr[3]; %> 
+                    <% var time = dateArr[4].split(":"); %> 
+                    <% var hour = time[0]; %> 
+                    <% var min = time[1]; %> 
+                    <% var sec = time[2]; %> 
+                    <% var postfix = "" %> 
+                    <% if(Number(hour) > 12){ %>
+                        <% hour = Number(hour) - 12; %> 
+                        <% postfix = "PM"; %> 
+                    <% } else if(Number(hour) == 12){ %>
+                        <% postfix = "PM"; %> 
+                    <% } else { %>
+                        <% postfix = "AM"; %> 
+                    <% } %> 
+                <span class="comments_form_header--name"><%= comments[i].USER_NAME %>:</span>
+                <span class="comments_form_header--date"><%= hour %>:<%= min %>:<%= sec %>&nbsp<%= postfix %>&nbsp - &nbsp<%= day %>&nbsp<%= month %>&nbsp<%= year %></span>
+            </div>
+            <p class="comments_form--comment"><%= comments[i].COMMENT_TEXT %> </p>
+            <div class="comments_form--btn">
+                <% if(!currentUser){ %> 
+                    <% } else { %>
+                        <% if(currentUser.USER_TYPE == "Moderators" || (currentUser.USER_ID == comments[i].USER_ID)){ %>
+                            <a href="/manage/drugs/<%=drugs[0].DRUG_ID%>/<%=comments[i].COMMENT_ID%>/delete" class="drug_imgbox--btn-red smallBtn" id="warning">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                delete
+                            </a>
+                        <% } %> 
+                        <% if(currentUser.USER_ID == comments[i].USER_ID){ %> 
+                            <a href="/manage/drugs/<%=drugs[0].DRUG_ID%>/<%=comments[i].COMMENT_ID%>/edit" class="drug_imgbox--btn-item smallBtn highlight">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Edit
+                            </a>
+                        <% } %> 
+                    <% } %> 
+            </div>
+        </div>
+    <% } %> 
+</div>
+
+
+<%- include('../../partials/footer'); -%> 

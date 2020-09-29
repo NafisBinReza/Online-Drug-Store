@@ -1,0 +1,55 @@
+<%- include('../../partials/header'); -%> 
+
+<header class = "header">
+    <div class="kid">
+        <H1 class="header_title"> medical &nbsp; drug &nbsp; marketing</H1>
+    </div>
+</header>
+
+<div class="box">
+    <div class="flash">
+        <% if(error && error.length > 0){ %> 
+            <div class="flash_error">
+                <h1 class="flash_error--text"><%= error %></h1> 
+            </div>
+        <% } %> 
+        <% if(success && success.length > 0){ %> 
+            <div class="flash_success">
+                <h1 class="flash_success--text"><%= success %></h1> 
+            </div>
+        <% } %> 
+    </div>
+
+    <% var prev = '' %> 
+    <% for(var i = 0; i < drugs.length; i++){ %> 
+        <% if(prev != drugs[i].DRUG_FOR){ %> 
+            <div class="header_secondary">
+                <h1 class="header_secondary--title">Popular <%= drugs[i].DRUG_FOR %> Medicines</h1>
+            </div>
+            <% prev = drugs[i].DRUG_FOR %>
+        <% } %> 
+        <div class="drug">
+            <div class="drug_imgbox">
+                <ul>
+                    <img src="/img/<%= drugs[i].DRUG_IMAGE %>" alt="DRUG_IMAGE" class="drug_imgbox--img">
+                    <div class="drug_info">
+                        <li><img src="/style/icon/medicine.png" class="icon" alt=""><h3 class="drug_info--item">Name: <%= drugs[i].DRUG_NAME %></h3></li>
+                        <li><img src="/style/icon/medicine.png" class="icon" alt=""><p class="drug_info--item">Disease: <%= drugs[i].DRUG_FOR %></p></li>
+                        <li><img src="/style/icon/medicine.png" class="icon" alt=""><p class="drug_info--item">price: <%= drugs[i].DRUG_PRICE %> Taka</p></li>
+                        <div class="drug_imgbox--btn">
+                            <a href="/manage/drugs/<%=drugs[i].DRUG_ID%>/details" class="drug_imgbox--btn-item bigBtn highlight">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Details
+                            </a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    <% } %> 
+</div>
+
+<%- include('../../partials/footer'); -%> 

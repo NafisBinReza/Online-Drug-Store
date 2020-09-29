@@ -1,0 +1,173 @@
+@mixin inputBox {
+    padding: 0.7rem 2rem;
+    border: none;
+    height: 50%;
+    border-bottom: 2px solid $Highlight_color;
+    border-top: $Border solid transparent;
+    font-size: calc(7px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    background-color: transparent;
+    color: $Font_color;
+    margin-left: 3%;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        opacity: 0.8;
+        font-family: inherit;
+        letter-spacing: 2px;
+    }
+}
+
+@mixin forms {
+    padding-top: 2rem;
+    width: 60%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+}
+
+.form {
+    background-color: $Primary_color;
+    color: $Font_color;
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    &_login {
+        @include forms();
+        margin: 0 auto;
+        top: 20%;
+
+        &--btn {
+            margin-top: 2rem;
+            height: 3rem;
+            width: 60%;
+            border: $Border solid transparent;
+            background-color: $Primary_color;
+            color: $Font_color;
+            box-shadow: 0 0 1rem $Highlight_color;
+            font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));;
+            padding: 0.5rem;
+            transform: translateX(45%);
+                -webkit-transform: translateX(45%);
+                -moz-transform: translateX(45%);
+                -ms-transform: translateX(45%);
+                -o-transform: translateX(45%);
+            @include borderRadius5();
+            
+            &:hover, &:focus {
+                transform: translate(45%, -3px);
+                    -webkit-transform: translate(45%, -3px);
+                    -moz-transform: translate(45%, -3px);
+                    -ms-transform: translate(45%, -3px);
+                    -o-transform: translate(45%, -3px);
+                @include hoverEffects();
+            }
+
+            &:active {
+                outline: none;
+                transform: translate(45%, 3px);
+                    -webkit-transform: translate(45%, 3px);
+                    -moz-transform: translate(45%, 3px);
+                    -ms-transform: translate(45%, 3px);
+                    -o-transform: translate(45%, 3px);
+                @include hoverEffects();
+            }
+        }    
+    }
+
+    &_DRUG {
+        padding-bottom: 5rem;
+        padding-top: 3rem;
+        width: 80%;
+        margin: 0 auto;
+        height: 100%;
+    }
+
+    &_input {
+        width: 100%;        
+        &:focus {
+            outline: none;
+            border: $Border solid $Highlight_color;
+        }
+        
+        .textarea {
+            height: 8rem;
+        }
+        
+        &:not(:last-child) {
+            margin-bottom: 4rem;
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            background-color: $Primary_color;
+            border: none;
+            font-size: calc(7px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+            padding: 0.4rem 0.3rem;
+            color: $Highlight_color;
+            width: 30%;
+            border: 1px solid $Highlight_color;
+        }
+    }
+
+    &_input select {
+        background-color: $Primary_color;
+    }
+
+    &_register {
+        @include forms();
+        margin: 5rem auto;
+
+        &--box {
+            z-index: 100;
+            background-color: transparent;
+            @include inputBox();
+            margin-left: 5%;
+            width: 50%;
+            box-shadow: 0px 0px 2rem $Highlight_color;
+            &:focus, &:active {
+                color: $Font-color;
+                box-shadow: 0px 0px 2rem 0.5rem $Highlight_color;
+            }
+            &::placeholder {
+                color: $Highlight_color;
+            }
+        }
+        
+        &--label {
+            font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+            text-align: right;
+            float: left;
+            width: 25%;
+            padding-top: 0.1rem;
+        }
+
+        &--gender {
+            font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+            font-family: inherit;
+            color: $Font_color;
+            text-align: left;
+            width: calc(50% + 4rem);
+            padding: 0.7rem 2rem;
+            border: none;
+            background-color: transparent;
+            border-bottom: $Border solid $Highlight_color;
+            border-top: $Border solid transparent;
+            height: 50%;
+            margin-left: 5%;
+            box-shadow: 0px 0px 2rem $Highlight_color;
+            overflow: hidden;
+
+            &:focus {
+                outline: none;
+                border: $Border solid $Highlight_color;
+            }
+        }
+    }
+}

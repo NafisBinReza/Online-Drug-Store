@@ -1,0 +1,29 @@
+.header {
+    background-color: $Primary_color;
+    text-align: center;
+    height: 25vh;
+    width: 100%;
+    padding-bottom: 0.5rem;
+
+    &_title {
+        text-transform: uppercase;
+        font-size: calc(78px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+        padding-top: 5rem;
+        width: 100%;
+        letter-spacing: 3px;
+    }
+
+    &_secondary {
+        background-image: linear-gradient(to right, $End_gradient, $Start_gradient);
+        height: 8vh;
+        width: 100%;
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+        text-align: center;
+        letter-spacing: 3px;
+
+        &--title {
+            font-size: calc(30px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));;
+        }
+    }
+}

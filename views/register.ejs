@@ -1,0 +1,63 @@
+<%- include('partials/header'); -%>
+<div class="header_secondary">
+    <h1 class="header_secondary--title"> Register </h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+
+<div class="form">
+    <div class="form_register">
+        <form action="/register" method="POST">
+            <div class="form_input">
+                <label class="form_register--label" for="name">Username: </label>
+                <input class="form_register--box" type="text" name="username" placeholder="" id="name" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="password1">Password: </label>
+                <input pattern=".{8,}" title="Password must be 8 characters minimum" class="form_register--box" type="password" name="password" placeholder="8 characters minimum" id="password1" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="password2">Retype Password: </label>
+                <input class="form_register--box" type="password" name="password2" placeholder="" id="password2" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="gender">Gender: </label>
+                <select name="gender" id="gender" class="form_register--gender" placeholder="Select" required>
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="email">Email: </label>
+                <input class="form_register--box" type="email" id="email" name="email" placeholder="">
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Phone">Phone NO: </label>
+                <input class="form_register--box" type="Phone" id="Phone" name="Phone" placeholder="" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Address">Address: </label>
+                <textarea type="text" name="Address" placeholder="Your orders will be delivered in this address" id="Address" class="form_register--box textarea" required></textarea>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="date">Birth date: </label>
+                <input class="form_register--box" type="date" value="2000-01-01" id="date" name="date" placeholder="" required>
+            </div>
+            <button class="form_login--btn">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

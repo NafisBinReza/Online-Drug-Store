@@ -1,0 +1,107 @@
+<%- include('../../partials/header'); -%> 
+<div class="header_secondary">
+    <h1 class="header_secondary--title"> Edit: <%= users[0].USER_NAME %> </h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+<div class="suggestion">
+    <p>Leave password fields empty if you don't want to change password</p>
+</div>
+
+<div class="form">
+    <div class="form_register">
+        <input type="hidden" name="referer" value= <%= referer %> >
+        <form action="/manage/users/<%=users[0].USER_ID%>/editUser" method="POST">
+            <div class="form_input">
+                <label class="form_register--label" for="name">Username: </label>
+                <input value="<%= users[0].USER_NAME %>" class="form_register--box" type="text" name="username" placeholder="Username" id="name" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="password1">Password: </label>
+                <input pattern=".{8,}" title="Password must be 8 characters minimum" class="form_register--box" type="password" name="password" placeholder="Password" id="password1">
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="password2">Retype Password: </label>
+                <input class="form_register--box" type="password" name="password2" placeholder="Retype password" id="password2">
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="gender">Gender: </label>
+                <select selected="<%= users[0].USER_GENDER %>" name="gender" id="gender" class="form_register--gender" placeholder="Select">
+                    <option value="Male" <%= (users[0].USER_GENDER === 'Male') ? "Selected" : "" %> >Male</option>
+                    <option value="Female" <%= (users[0].USER_GENDER === 'Female') ? "Selected" : "" %> >Female</option>
+                </select>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="email">Email: </label>
+                <input value="<%= users[0].USER_EMAIL %>" class="form_register--box" type="email" id="email" name="email" placeholder="Email">
+            </div>
+                <% var date = users[0].USER_BDAY; %>
+                <% var dateArr = date.toString().split(" "); %>  
+                <% var month = dateArr[1]; %>
+                <% var day = dateArr[2]; %> 
+                <% var year = dateArr[3]; %> 
+                <% if (month == 'Jan'){ %> 
+                    <% month = '01'; %> 
+                <% } %> 
+                <% if (month == 'Feb'){ %> 
+                    <% month = '02'; %> 
+                <% } %> 
+                <% if (month == 'Mar'){ %> 
+                    <% month = '03'; %> 
+                <% } %> 
+                <% if (month == 'Apr'){ %> 
+                    <% month = '04'; %> 
+                <% } %> 
+                <% if (month == 'May'){ %> 
+                    <% month = '05'; %> 
+                <% } %> 
+                <% if (month == 'Jun'){ %> 
+                    <% month = '06'; %> 
+                <% } %> 
+                <% if (month == 'Jul'){ %> 
+                    <% month = '07'; %> 
+                <% } %> 
+                <% if (month == 'Aug'){ %> 
+                    <% month = '08'; %> 
+                <% } %> 
+                <% if (month == 'Sep'){ %> 
+                    <% month = '09'; %> 
+                <% } %> 
+                <% if (month == 'Oct'){ %> 
+                    <% month = '10'; %> 
+                <% } %> 
+                <% if (month == 'Nov'){ %> 
+                    <% month = '11'; %> 
+                <% } %> 
+                <% if (month == 'Dec'){ %> 
+                    <% month = '12'; %> 
+                <% } %> 
+            <div class="form_input">
+                <label class="form_register--label" for="date">Birth date: </label>
+                <input value="<%=year%>-<%=month%>-<%=day%>" class="form_register--box" type="date" id="date" name="date" placeholder="Birth Date" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Phone">Phone NO: </label>
+                <input value="<%= users[0].USER_PHONE_NO %>" class="form_register--box" type="Phone" id="Phone" name="Phone" placeholder="" required>
+            </div>
+            <div class="form_input">
+                <label class="form_register--label" for="Address">Address: </label>
+                <textarea type="text" name="Address" placeholder="Orders will be delivered in this address" id="Address" class="form_register--box textarea" required><%= users[0].USER_ADDRESS %></textarea>
+            </div>
+            <button class="form_login--btn">Done</button>
+        </form>
+    </div>
+</div>
+
+<%- include('../../partials/footer'); -%> 

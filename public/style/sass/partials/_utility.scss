@@ -1,0 +1,162 @@
+* {
+    padding: 0;
+    margin: 0%;
+    
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    color: $Font-color;
+    font-size: 62.5%;
+    width: 100%;
+    background-color: $Primary_color;
+
+    &::-webkit-scrollbar {
+        width: 0.75rem;
+
+        &-track {
+            background: $Primary_color;
+        }
+
+        &-thumb {
+            background: linear-gradient(to bottom ,$End_gradient, $Highlight_color);
+        }
+    }
+}
+
+
+a {
+    color: $Font_color;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    display: inline-block;
+}
+
+main {
+    padding-top: 5rem;
+    background-color: $Primary_color;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+
+@mixin borderRadius10 {
+    border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
+
+@mixin borderRadius5 {
+    border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+}
+
+
+@mixin hoverEffects {
+    box-shadow: 0 0 5rem 0.5rem $Highlight_color;
+    -webkit-box-reflect: below 0 linear-gradient(transparent, $Start_gradient);
+}
+
+.icon {
+    width: 1.2rem;
+    display: inline-block;
+    position: absolute;
+    margin: 0.9% 0;
+}
+
+.highlight {
+    color: $Highlight_color;
+}
+
+.username {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    &:hover {
+        background-color: $Primary_color;
+        transition: 0s;
+        -webkit-transition: 0s;
+        -moz-transition: 0s;
+        -ms-transition: 0s;
+        -o-transition: 0s;
+    }
+}
+
+.block {
+    display: block;
+}
+
+.suggestion {
+    text-align: center;
+    padding: 0.75rem;
+    margin: 1rem auto;
+    font-family: 'Playfair Display';
+    font-size: 2rem;
+    background-color: $Primary_color;
+    box-shadow: 0 0 2rem $Highlight_color;
+    color: $Highlight_color;
+    width: 60%;
+    margin-top: 2rem;
+    @include borderRadius10();
+}
+
+
+.logo {
+    font-size: 4.5rem;
+}
+
+.gap{
+    content: "";
+    display: table;
+    padding: 0.5rem;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    width: 75%;
+    margin-bottom: 2.5rem;
+    border-bottom: 2px solid $Highlight_color;
+}
+
+.bigBtn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.smallBtn {
+    width: 25%;
+}
+
+.mediumBtm {
+    width: 35%;
+}
+
+.padding-left {
+    margin-left: 2rem;
+}
+
+.cartBtn {
+    width: 85%;
+}
+
+.largBtn {
+    width: 85%;
+}
+
+.red {
+    color: $Warning;
+}
+
+.margin-top {
+    margin-top: 3rem;
+}

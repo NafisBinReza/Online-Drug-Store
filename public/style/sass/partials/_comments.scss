@@ -1,0 +1,116 @@
+.comments {
+    &_form {
+        padding: 2rem;
+        width: 70%;
+        margin: 1rem auto;
+        box-shadow: 0px 0px 3rem $Highlight_color;
+        padding-bottom: 3rem;
+        @include borderRadius10();
+
+        &--btn{
+            width: 40%;
+            float: right;
+            height: 5rem;
+            font-size: 1.5rem;
+            font-size: 1rem;
+        }
+
+        &--submit {
+            margin-top: 2rem;
+            height: 3rem;
+            width: 60%;
+            border: $Border solid transparent;
+            background-color: $Primary_color;
+            color: $Font_color;
+            box-shadow: 0 0 1rem $Highlight_color;
+            font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));;
+            padding: 0.5rem;
+            transform: translateX(30%);
+                -webkit-transform: translateX(30%);
+                -moz-transform: translateX(30%);
+                -ms-transform: translateX(30%);
+                -o-transform: translateX(30%);
+            @include borderRadius5();
+            
+            &:hover, &:focus {
+                transform: translate(30%, -3px);
+                    -webkit-transform: translate(30%, -3px);
+                    -moz-transform: translate(30%, -3px);
+                    -ms-transform: translate(30%, -3px);
+                    -o-transform: translate(30%, -3px);
+                @include hoverEffects();
+            }
+
+            &:active {
+                outline: none;
+                transform: translate(30%, 3px);
+                    -webkit-transform: translate(30%, 3px);
+                    -moz-transform: translate(30%, 3px);
+                    -ms-transform: translate(30%, 3px);
+                    -o-transform: translate(30%, 3px);
+                @include hoverEffects();
+            }
+        }
+        
+
+        &--comment {
+            font-size: 1rem;
+            line-height: 1.7;
+            padding: 1rem;
+        }
+        
+        &_header {
+            display: inline-block;
+
+            &--name {
+                font-size: 1.5rem;
+                font-family: inherit;
+                color: $Highlight_color;
+                padding: 0.5rem;
+            }
+
+            &--date {
+                font-size: 1rem;
+                padding: 0.5rem;
+                float: right;
+            }
+        }
+
+
+        &--label {
+            font-size: calc(16px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+            font-family: inherit;
+            text-align: left;
+            margin-left: 5%;
+        }
+
+        &--item {
+            margin-top: 1rem;
+            padding: 0.7rem 2rem;
+            border: none;
+            height: 10rem;
+            width: 80%;
+            border-bottom: $Border solid $Highlight_color;
+            border-top: $Border solid transparent;
+            font-size: calc(7px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+            background-color: transparent;
+            color: $Font_color;
+            margin-left: 5%;
+            @include borderRadius10();
+
+            &:focus, &:hover {
+                outline: none;
+                box-shadow: 0 0 1rem $Highlight_color;
+            }
+
+            &::placeholder {
+                color: $Highlight_color;
+                opacity: 0.5;
+                font-family: inherit;
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,19 @@
+.container {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    &-p {
+        padding: 1rem;
+        padding-bottom: 1rem;
+        line-height: 1.7;
+        font-size: 1.2rem;
+        box-shadow: 0 0 1.5rem $Highlight_color;
+        margin-bottom: 1rem;
+        @include borderRadius10();
+    }
+
+    &-span {
+        margin: 0.5rem;
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,106 @@
+<%- include('../../partials/header'); -%> 
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Items in your shopping Cart</h1>
+</div>
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+
+<div class="cart">
+    <% if(cart.length == 0){ %>
+        <div class="suggestion">
+            <p>Your cart is empty</p>
+        </div>
+    <% } else {%> 
+        <div class="cart_details">
+            <table>
+                <tr>
+                    <th>No.</th>
+                    <th>Drug Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <% var total = 0; %> 
+                <% var product = 0; %> 
+                <% for(var i = 0; i < cart.length; i++){ %>
+                    <tr>
+                        <td><%= i + 1; %> </td>
+                        <td><%= cart[i].DRUG_NAME; %></td>
+                        <td><%= cart[i].DRUG_PRICE; %></td>
+                        <td><%= cart[i].CART_QUANTITY; %></td>
+                        <td><%= cart[i].TOTAL_PRICE; %></td>
+                        <td>
+                            <a href="/manage/carts/<%=cart[i].CART_ID%>/edit" class="cart_btn-item largBtn">
+                                <img src="/style/icon/edit.png" class="cart_icon" alt="">
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/manage/carts/<%=cart[i].CART_ID%>/delete" class="cart_btn-item largBtn">
+                                <img src="/style/icon/close.png" class="cart_icon" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                    <% total += cart[i].TOTAL_PRICE; %> 
+                    <% product += cart[i].CART_QUANTITY; %> 
+                <% } %> 
+                <tr>
+                    <td>Total</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><%= product %></td>
+                    <td><%= total %></td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="cart_user">
+            <h1 class="cart_user-title">Order will be delivered to: </h1>
+            <div class="profile_description-item">
+                <label class="form_register--label" for="name">User Name: </label>
+                <input class="cart_user-item" id="name" type="text" value="<%= currentUser.USER_NAME %>" disabled>
+            </div>
+            <div class="profile_description-item">
+                <label class="form_register--label" for="Email">Email: </label>
+                <input class="cart_user-item" id="Email" type="text" value="<%= currentUser.USER_EMAIL %>" disabled>
+            </div>
+            <div class="profile_description-item">
+                <label class="form_register--label" for="Phone">Phone NO: </label>
+                <input value="<%= currentUser.USER_PHONE_NO %>" class="cart_user-item" type="Phone" id="Phone" name="Phone" placeholder="" required>
+            </div>
+            <div class="profile_description-item">
+                <label class="form_register--label" for="Address">Address: </label>
+                <textarea type="text" name="Address" placeholder="Orders will be delivered in this address" id="Address" class="cart_user-item textarea" required><%= currentUser.USER_ADDRESS %></textarea>
+            </div>
+            <div class="cart_btn">
+                <form action="/manage/users/<%= currentUser.USER_ID %>/placeOrder" method="POST">
+                    <div class="form_input">
+                        <label class="form_register--label" for="Payment">Payment method: </label>
+                        <select name="payment" id="Payment" class="form_register--gender" placeholder="Select" required>
+                            <option value="" selected disabled hidden>Choose here</option>
+                            <option value="Cash">Cash on delivery</option>
+                        </select>
+                        <button class="cart_submit--btn">Place order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <% } %> 
+</div>
+
+<%- include('../../partials/footer'); -%> 

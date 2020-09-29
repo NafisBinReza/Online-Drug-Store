@@ -1,0 +1,156 @@
+.users {
+    display: inline-block;
+    font-size: 1rem;
+    width: 90%;
+    overflow: hidden;
+    height: 100%;
+    padding: 3rem;
+
+    summary{
+        outline:none;
+    }
+
+    &_description {
+        line-height: 1.7;
+        float: left;
+        width: 25%;
+        margin-left: 7%;
+        margin-top: 1%;
+        padding: 0.5%;
+        padding-bottom: 1%;
+        font-size: 1.2rem;
+        box-shadow: 0 0 1rem $Highlight_color;
+        @include borderRadius10();
+
+        &--btn {
+            margin-top: 3rem;
+            text-transform: uppercase;
+
+            &-item {
+                margin-right: 2rem;
+                box-shadow: 0 0 1rem $Highlight_color;
+                padding: 0.4rem;
+                width: 90%;
+                text-align: center;
+                @include borderRadius5();
+
+                & span{
+                    position: absolute;
+                    display: block;
+                }
+                            
+                & span:nth-child(1){
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 0;
+                }
+
+                & span:nth-child(3){
+                    bottom: 0;
+                    right: -100%;
+                    width: 100%;
+                    height: 0;
+                }
+
+                & span:nth-child(2){
+                    top: -100%;
+                    right: 0;
+                    width: 0;
+                    height: 100%;
+                }
+                
+                & span:nth-child(4){
+                    bottom: -100%;
+                    left: 0;
+                    width: 0;
+                    height: 100%;
+                }
+
+                
+                &:hover, &:focus {
+                    transform: translateY(-3px);
+                        -webkit-transform: translateY(-3px);
+                        -moz-transform: translateY(-3px);
+                        -ms-transform: translateY(-3px);
+                        -o-transform: translateY(-3px);
+                    @include hoverEffects();
+                }
+
+                &:active {
+                    transform: translateY(3px);
+                        -webkit-transform: translateY(3px);
+                        -moz-transform: translateY(3px);
+                        -ms-transform: translateY(3px);
+                        -o-transform: translateY(3px);
+                    @include hoverEffects();
+                }
+                
+                &:hover span:nth-child(1){
+                    background-image: linear-gradient(90deg, transparent, $Highlight_color);
+                    @include snakeBorderTop();
+                }
+                
+                &:hover span:nth-child(3){
+                    background-image: linear-gradient(270deg, transparent, $Highlight_color);
+                    @include snakeBorderBottom();
+                }
+                
+                &:hover span:nth-child(2){
+                    background-image: linear-gradient(180deg, transparent, $Highlight_color);
+                    @include snakeBorderRight();
+                }
+                
+                &:hover span:nth-child(4){
+                    background-image: linear-gradient(360deg, transparent, $Highlight_color);
+                    @include snakeBorderLeft();
+                }
+            }
+
+            &-red{
+                width: 90%;
+                margin-right: 2rem;
+                box-shadow: 0 0 1rem $Warning;
+                color: $Warning;
+                padding: 0.4rem;
+                @include snakeBorder();
+
+                &:hover {
+                    box-shadow: 0 0 5rem 0.5rem $Warning;
+                }
+                
+                &:hover span:nth-child(1){
+                    background-image: linear-gradient(90deg, transparent, $Warning);
+                    @include snakeBorderTop();
+                }
+                
+                &:hover span:nth-child(3){
+                    background-image: linear-gradient(270deg, transparent, $Warning);
+                    @include snakeBorderBottom();
+                }
+                
+                &:hover span:nth-child(2){
+                    @include snakeBorderRight();
+                    background-image: linear-gradient(180deg, transparent, $Warning);
+                }
+                
+                &:hover span:nth-child(4){
+                    background-image: linear-gradient(360deg, transparent, $Warning);
+                    @include snakeBorderLeft();
+                }  
+            }
+        }
+
+        &--name {
+            font-size: 1.5rem;
+        }
+
+        &--box {
+            padding-left: 1rem;
+        }
+
+        &:hover {
+            box-shadow: 0 0 3rem $Highlight_color;
+        }
+    }
+}

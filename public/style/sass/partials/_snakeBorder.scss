@@ -1,0 +1,103 @@
+@mixin snakeBorderTop {
+    height: 3px;
+    left: 100%;
+    transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+}
+
+
+@mixin snakeBorderBottom {
+    height: 3px;
+    right: 100%;
+    transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+    transition-delay: 0.5s;
+}
+
+
+@mixin snakeBorderRight {
+    width: 3px;
+    top: 100%;
+    transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+    transition-delay: 0.25s;
+}
+
+
+@mixin snakeBorderLeft {
+    width: 3px;
+    bottom: 100%;
+    transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+    transition-delay: 0.75s;
+}
+
+@mixin snakeBorder {
+    text-align: center;
+    @include borderRadius5();
+    
+
+    & span{
+        position: absolute;
+        display: block;
+    }
+                
+    & span:nth-child(1){
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 0;
+    }
+
+    & span:nth-child(3){
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 0;
+    }
+
+    & span:nth-child(2){
+        top: -100%;
+        right: 0;
+        width: 0;
+        height: 100%;
+    }
+    
+    & span:nth-child(4){
+        bottom: -100%;
+        left: 0;
+        width: 0;
+        height: 100%;
+    }
+
+    
+    &:hover, &:focus {
+        transform: translateY(-3px);
+            -webkit-transform: translateY(-3px);
+            -moz-transform: translateY(-3px);
+            -ms-transform: translateY(-3px);
+            -o-transform: translateY(-3px);
+        @include hoverEffects();
+    }
+
+    &:active {
+        transform: translateY(3px);
+            -webkit-transform: translateY(3px);
+            -moz-transform: translateY(3px);
+            -ms-transform: translateY(3px);
+            -o-transform: translateY(3px);
+        @include hoverEffects();
+    }
+}

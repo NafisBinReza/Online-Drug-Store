@@ -1,0 +1,108 @@
+<%- include('../../partials/header'); -%> 
+
+<div class="flash">
+    <% if(error && error.length > 0){ %> 
+        <div class="flash_error">
+            <h1 class="flash_error--text"><%= error %></h1> 
+        </div>
+    <% } %> 
+    <% if(success && success.length > 0){ %> 
+        <div class="flash_success">
+            <h1 class="flash_success--text"><%= success %></h1> 
+        </div>
+    <% } %> 
+</div>
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Moderators</h1>
+</div>
+
+<div class="users">
+    <% for(var i = 0; i < users.length; i++){ %> 
+        <% if(!currentUser){ %> 
+            <% } else { %>
+                <% if(users[i].USER_TYPE == "Moderators"){ %>
+                    <details class="users_description">
+                        <summary class="users_description--name"><%= users[i].USER_NAME %></summary>
+                            <div class="users_description--box">                                    
+                                <p>User ID: <%= users[i].USER_ID %> </p>
+                                    <% var date = users[i].USER_BDAY; %>
+                                    <% var dateArr = date.toString().split(" "); %>  
+                                    <% var month = dateArr[1]; %>
+                                    <% var day = dateArr[2]; %> 
+                                    <% var year = dateArr[3]; %> 
+                                <p>Date of Birth: <%= day %> <%= month %> <%= year %> </p>
+                                <p>Gender: <%= users[i].USER_GENDER %></p>
+                                <p>Email: <%= users[i].USER_EMAIL %></p>
+                                <p>Type: <%= users[i].USER_TYPE %></p>
+                                    <% var date = users[i].USER_ADDED_AT; %>
+                                    <% var dateArr = date.toString().split(" "); %>  
+                                    <% var month = dateArr[1]; %>
+                                    <% var day = dateArr[2]; %> 
+                                    <% var year = dateArr[3]; %>
+                                <p>Join date: <%= day %> <%= month %> <%= year %> </p>
+                            </div>
+                    </details>
+                <% } %> 
+            <% } %> 
+            
+    <% } %>         
+</div>
+
+<div class="header_secondary">
+    <h1 class="header_secondary--title">Manage User information</h1>
+</div>
+
+<div class="users">
+    <% for(var i = 0; i < users.length; i++){ %> 
+        <% if(!currentUser){ %> 
+            <% } else { %>
+                <% if(users[i].USER_TYPE != "Moderators"){ %>
+                    <details class="users_description">
+                        <summary class="users_description--name"><%= users[i].USER_NAME %></summary>
+                            <div class="users_description--box">
+                                <p>User ID: <%= users[i].USER_ID %> </p>
+                                <% var date = users[i].USER_BDAY; %>
+                                <% var dateArr = date.toString().split(" "); %>  
+                                <% var month = dateArr[1]; %>
+                                <% var day = dateArr[2]; %> 
+                                <% var year = dateArr[3]; %> 
+                            <p>Date of Birth: <%= day %> <%= month %> <%= year %> </p>
+                            <p>Gender: <%= users[i].USER_GENDER %></p>
+                            <p>Email: <%= users[i].USER_EMAIL %></p>
+                            <p>Type: <%= users[i].USER_TYPE %></p>
+                                <% var date = users[i].USER_ADDED_AT; %>
+                                <% var dateArr = date.toString().split(" "); %>  
+                                <% var month = dateArr[1]; %>
+                                <% var day = dateArr[2]; %> 
+                                <% var year = dateArr[3]; %>
+                            <p>Join date: <%= day %> <%= month %> <%= year %> </p>
+                            <div class="details_description--btn">
+                                <% if(!currentUser){ %> 
+                                    <% } else { %>
+                                        <% if(users[i].USER_TYPE != "Moderators"){ %>
+                                            <a href="/manage/users/<%=users[i].USER_ID%>/edit" class="users_description--btn-item highlight">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                &nbsp; Edit &nbsp;
+                                            </a>
+                                            <a href="/manage/users/<%=users[i].USER_ID%>/delete" class="users_description--btn-red highlight">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                                delete
+                                            </a>
+                                        <% } %> 
+                                    <% } %> 
+                                </div>
+                            </div>
+                    </details>
+                <% } %> 
+            <% } %> 
+    <% } %>         
+</div>
+
+<%- include('../../partials/footer'); -%> 

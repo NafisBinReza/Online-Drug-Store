@@ -1,0 +1,121 @@
+.box {
+    background-color: $Primary_color;
+    width: 100%;
+    margin: 0 auto;
+} 
+
+.drug {
+    margin: 0 auto;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    text-align: left;
+    font-family: inherit;
+    justify-content: center;
+
+    &_imgbox {
+        margin-left: 30%;
+        float: left;
+        font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+        font-weight: 400;
+        width: 75%;
+        height: 70%;
+        margin-top: 12%;
+        margin-bottom: 8%;
+        line-height: 1.7;
+        box-shadow: 0 0 3.5rem $Highlight_color;
+        @include borderRadius10();
+        
+        &--img {
+            width: 100%;
+            height: 18rem;
+            @include borderRadius10();
+        }
+
+        &--btn {
+            height: 3rem;
+            margin-top: 2rem;
+            padding-left: 1.5rem;
+            width: 100%;
+
+            &-item {
+                padding: 0.4rem;
+                float: right;
+                margin-right: 1rem;
+                font-family: NightmarePills;
+                box-shadow: 0 0 1rem $Highlight_color;
+                @include snakeBorder();
+                
+                &:hover span:nth-child(1){
+                    background-image: linear-gradient(90deg, transparent, $Highlight_color);
+                    @include snakeBorderTop();
+                }
+                
+                &:hover span:nth-child(3){
+                    background-image: linear-gradient(270deg, transparent, $Highlight_color);
+                    @include snakeBorderBottom();
+                }
+                
+                &:hover span:nth-child(2){
+                    background-image: linear-gradient(180deg, transparent, $Highlight_color);
+                    @include snakeBorderRight();
+                }
+                
+                &:hover span:nth-child(4){
+                    background-image: linear-gradient(360deg, transparent, $Highlight_color);
+                    @include snakeBorderLeft();
+                }
+            }
+
+            &-red {
+                box-shadow: 0 0 1rem $Warning;
+                color: $Warning;
+                padding: 0.4rem;
+                float: right;
+                margin-right: 2rem;
+                @include snakeBorder();
+
+                &:hover {
+                    box-shadow: 0 0 5rem 0.5rem $Warning;
+                }
+                
+                &:hover span:nth-child(1){
+                    background-image: linear-gradient(90deg, transparent, $Warning);
+                    @include snakeBorderTop();
+                }
+                
+                &:hover span:nth-child(3){
+                    background-image: linear-gradient(270deg, transparent, $Warning);
+                    @include snakeBorderBottom();
+                }
+                
+                &:hover span:nth-child(2){
+                    @include snakeBorderRight();
+                    background-image: linear-gradient(180deg, transparent, $Warning);
+                }
+                
+                &:hover span:nth-child(4){
+                    background-image: linear-gradient(360deg, transparent, $Warning);
+                    @include snakeBorderLeft();
+                }
+            }
+        }
+    }
+    
+    &_info {
+        padding: 1.5rem;
+        padding-bottom: 2.5rem;
+
+        &--item {
+            padding-left: 1.7rem;
+            &:not(:last-child) {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        &--extra {
+            padding: 0 1rem;
+        }
+    }
+}
+
